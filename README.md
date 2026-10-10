@@ -125,7 +125,3 @@ rm -rf ~/eink-ssd1680
 
 - The network screen looks up your public IP through [ipify](https://www.ipify.org/). If you'd rather not make that request, remove the WAN lookup from `network.py`.
 - E-paper holds its last image with no power. If you leave a Pi off for a long time, consider showing a blank screen rather than leaving one image up indefinitely.
-
-## License
-
-MIT. Add a `LICENSE` file with the full text (replace the name and year).
