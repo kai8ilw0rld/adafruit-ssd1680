@@ -16,6 +16,7 @@ A small status display for Raspberry Pi using an SSD1680-based 2.13" (250x122) e
 
 - Raspberry Pi, anything from the Zero W up to the Pi 5
 - SSD1680 2.13" e-paper display with two buttons (for example an Adafruit 2.13" eInk bonnet)
+    * https://www.adafruit.com/product/4687
 
 | Function | Pin |
 | --- | --- |
