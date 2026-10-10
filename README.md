@@ -40,8 +40,8 @@ Clone the repository into your home directory and run the installer **as a norma
 
 ```bash
 cd ~
-git clone https://github.com/<your-username>/eink-ssd1680.git
-cd eink-ssd1680
+git clone https://github.com/<your-username>/adafruit-ssd1680.git
+cd adafruit-ssd1680
 chmod +x install.sh
 ./install.sh
 sudo reboot
@@ -51,8 +51,8 @@ The installer:
 
 1. Installs the needed Debian packages (fonts, i2c tools, GPIO libraries, Pillow)
 2. Enables SPI, I2C and the other interfaces through `raspi-config`
-3. Creates a virtual environment at `~/eink-ssd1680/env` and installs the Python packages (it uses `rpi-lgpio` on a Pi 5)
-4. Adds a cron `@reboot` entry that runs `e-ink/eink-init.sh`
+3. Creates a virtual environment at `~/adafruit-ssd1680/env` and installs the Python packages (it uses `rpi-lgpio` on a Pi 5)
+4. Adds a cron `@reboot` entry that runs `adafruit-ssd1680/eink-init.sh`
 5. Adds a sudoers rule (see below) so the buttons can power off and reboot the Pi
 6. Checks that the key Python imports work
 
@@ -68,9 +68,8 @@ After boot it shows the system info screen. If nothing is pressed, it flips to t
 ## Project layout
 
 ```
-eink-ssd1680/
+adafruit-ssd1680/
 ├── install.sh              # installer
-├── e-ink/
 │   ├── eink-init.sh        # started at boot by cron
 │   ├── buttoncontrol.py    # button loop and auto-flip timer
 │   ├── info.py             # system stats screen
@@ -106,8 +105,8 @@ sudo rm /etc/sudoers.d/eink
 
 ## Troubleshooting
 
-- **Check the log:** `tail -n 50 ~/eink-ssd1680/eink.log`
-- **Run a screen by hand:** `~/eink-ssd1680/env/bin/python ~/eink-ssd1680/e-ink/info.py`
+- **Check the log:** `tail -n 50 ~/adafruit-ssd1680/eink.log`
+- **Run a screen by hand:** `~/adafruit-ssd1680/env/bin/python ~/adafruit-ssd1680/info.py`
 - **Nothing happens at boot:** check that the cron entry exists with `crontab -l` and that `eink-init.sh` is executable
 - **Shutdown or reboot button does nothing:** confirm the sudoers rule works with `sudo -n -l systemctl reboot`, which should print the command instead of asking for a password
 - **Blank or garbled display:** make sure SPI is enabled (`sudo raspi-config nonint do_spi 0`) and check the pin wiring
@@ -118,7 +117,7 @@ sudo rm /etc/sudoers.d/eink
 ```bash
 crontab -l | grep -v "eink-init.sh" | crontab -
 sudo rm -f /etc/sudoers.d/eink
-rm -rf ~/eink-ssd1680
+rm -rf ~/adafruit-ssd1680
 ```
 
 ## Notes
